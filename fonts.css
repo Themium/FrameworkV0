@@ -2,86 +2,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Arimo:ital,wght@0,400..700;1,400..700&family=Bitcount+Grid+Double:wght@100..900&family=Bungee+Spice&family=Cossette+Titre:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kumbh+Sans:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 /* Font Classes */
-.tf.f-archivo-black { font-family: "Archivo Black", sans-serif; }
-.tf.f-arimo { font-family: "Arimo", sans-serif; }
-.tf.f-bitcount-grid-double { font-family: "Bitcount Grid Double", monospace; }
-.tf.f-bungee-spice { font-family: "Bungee Spice", cursive; }
-.tf.f-cossette-titre { font-family: "Cossette Titre", serif; }
-.tf.f-dm-serif-text { font-family: "DM Serif Text", serif; }
-.tf.f-epunda-sans { font-family: "Epunda Sans", sans-serif; }
-.tf.f-inter { font-family: "Inter", sans-serif; }
-.tf.f-kumbh-sans { font-family: "Kumbh Sans", sans-serif; }
-.tf.f-lato { font-family: "Lato", sans-serif; }
-.tf.f-montserrat { font-family: "Montserrat", sans-serif; }
-.tf.f-noto-sans { font-family: "Noto Sans", sans-serif; }
-.tf.f-open-sans { font-family: "Open Sans", sans-serif; }
-.tf.f-oswald { font-family: "Oswald", sans-serif; }
-.tf.f-roboto-condensed { font-family: "Roboto Condensed", sans-serif; }
-.tf.f-roboto-mono { font-family: "Roboto Mono", monospace; }
-.tf.f-roboto { font-family: "Roboto", sans-serif; }
-.tf.f-sometype-mono { font-family: "Sometype Mono", monospace; }
-.tf.f-ubuntu { font-family: "Ubuntu", sans-serif; }
+.tf_f-archivo-black { font-family: "Archivo Black", sans-serif; }
+.tf_f-arimo { font-family: "Arimo", sans-serif; }
+.tf_f-bitcount-grid-double { font-family: "Bitcount Grid Double", monospace; }
+.tf_f-bungee-spice { font-family: "Bungee Spice", cursive; }
+.tf_f-cossette-titre { font-family: "Cossette Titre", serif; }
+.tf_f-dm-serif-text { font-family: "DM Serif Text", serif; }
+.tf_f-epunda-sans { font-family: "Epunda Sans", sans-serif; }
+.tf_f-inter { font-family: "Inter", sans-serif; }
+.tf_f-kumbh-sans { font-family: "Kumbh Sans", sans-serif; }
+.tf_f-lato { font-family: "Lato", sans-serif; }
+.tf_f-montserrat { font-family: "Montserrat", sans-serif; }
+.tf_f-noto-sans { font-family: "Noto Sans", sans-serif; }
+.tf_f-open-sans { font-family: "Open Sans", sans-serif; }
+.tf_f-oswald { font-family: "Oswald", sans-serif; }
+.tf_f-roboto-condensed { font-family: "Roboto Condensed", sans-serif; }
+.tf_f-roboto-mono { font-family: "Roboto Mono", monospace; }
+.tf_f-roboto { font-family: "Roboto", sans-serif; }
+.tf_f-sometype-mono { font-family: "Sometype Mono", monospace; }
+.tf_f-ubuntu { font-family: "Ubuntu", sans-serif; }
 
 /* Font Weights */
-.tf.fw-100 { font-weight: 100; }
-.tf.fw-200 { font-weight: 200; }
-.tf.fw-300 { font-weight: 300; }
-.tf.fw-400 { font-weight: 400; }
-.tf.fw-500 { font-weight: 500; }
-.tf.fw-600 { font-weight: 600; }
-.tf.fw-700 { font-weight: 700; }
-.tf.fw-800 { font-weight: 800; }
-.tf.fw-900 { font-weight: 900; }
+.tf_fw-100 { font-weight: 100; }
+.tf_fw-200 { font-weight: 200; }
+.tf_fw-300 { font-weight: 300; }
+.tf_fw-400 { font-weight: 400; }
+.tf_fw-500 { font-weight: 500; }
+.tf_fw-600 { font-weight: 600; }
+.tf_fw-700 { font-weight: 700; }
+.tf_fw-800 { font-weight: 800; }
+.tf_fw-900 { font-weight: 900; }
 
 /* Font Weight Aliases */
-.tf.fw-thin { font-weight: 100; }
-.tf.fw-extralight { font-weight: 200; }
-.tf.fw-light { font-weight: 300; }
-.tf.fw-normal { font-weight: 400; }
-.tf.fw-medium { font-weight: 500; }
-.tf.fw-semibold { font-weight: 600; }
-.tf.fw-bold { font-weight: 700; }
-.tf.fw-extrabold { font-weight: 800; }
-.tf.fw-black { font-weight: 900; }
+.tf_fw-thin { font-weight: 100; }
+.tf_fw-extralight { font-weight: 200; }
+.tf_fw-light { font-weight: 300; }
+.tf_fw-normal { font-weight: 400; }
+.tf_fw-medium { font-weight: 500; }
+.tf_fw-semibold { font-weight: 600; }
+.tf_fw-bold { font-weight: 700; }
+.tf_fw-extrabold { font-weight: 800; }
+.tf_fw-black { font-weight: 900; }
 
 /* Font Styles */
-.tf.fs-normal { font-style: normal; }
-.tf.fs-italic { font-style: italic; }
-.tf.fs-oblique { font-style: oblique; }
+.tf_fs-normal { font-style: normal; }
+.tf_fs-italic { font-style: italic; }
+.tf_fs-oblique { font-style: oblique; }
 
 /* Font Sizes */
-.tf.fz-xs { font-size: 0.75rem; }
-.tf.fz-sm { font-size: 0.875rem; }
-.tf.fz-base { font-size: 1rem; }
-.tf.fz-lg { font-size: 1.125rem; }
-.tf.fz-xl { font-size: 1.25rem; }
-.tf.fz-2xl { font-size: 1.5rem; }
-.tf.fz-3xl { font-size: 1.875rem; }
-.tf.fz-4xl { font-size: 2.25rem; }
-.tf.fz-5xl { font-size: 3rem; }
-.tf.fz-6xl { font-size: 3.75rem; }
-.tf.fz-7xl { font-size: 4.5rem; }
-.tf.fz-8xl { font-size: 6rem; }
-.tf.fz-9xl { font-size: 8rem; }
+.tf_fz-xs { font-size: 0.75rem; }
+.tf_fz-sm { font-size: 0.875rem; }
+.tf_fz-base { font-size: 1rem; }
+.tf_fz-lg { font-size: 1.125rem; }
+.tf_fz-xl { font-size: 1.25rem; }
+.tf_fz-2xl { font-size: 1.5rem; }
+.tf_fz-3xl { font-size: 1.875rem; }
+.tf_fz-4xl { font-size: 2.25rem; }
+.tf_fz-5xl { font-size: 3rem; }
+.tf_fz-6xl { font-size: 3.75rem; }
+.tf_fz-7xl { font-size: 4.5rem; }
+.tf_fz-8xl { font-size: 6rem; }
+.tf_fz-9xl { font-size: 8rem; }
 
 /* Line Heights */
-.tf.flh-none { line-height: 1; }
-.tf.flh-tight { line-height: 1.25; }
-.tf.flh-snug { line-height: 1.375; }
-.tf.flh-normal { line-height: 1.5; }
-.tf.flh-relaxed { line-height: 1.625; }
-.tf.flh-loose { line-height: 2; }
+.tf_flh-none { line-height: 1; }
+.tf_flh-tight { line-height: 1.25; }
+.tf_flh-snug { line-height: 1.375; }
+.tf_flh-normal { line-height: 1.5; }
+.tf_flh-relaxed { line-height: 1.625; }
+.tf_flh-loose { line-height: 2; }
 
 /* Letter Spacing */
-.tf.fls-tighter { letter-spacing: -0.05em; }
-.tf.fls-tight { letter-spacing: -0.025em; }
-.tf.fls-normal { letter-spacing: 0em; }
-.tf.fls-wide { letter-spacing: 0.025em; }
-.tf.fls-wider { letter-spacing: 0.05em; }
-.tf.fls-widest { letter-spacing: 0.1em; }
+.tf_fls-tighter { letter-spacing: -0.05em; }
+.tf_fls-tight { letter-spacing: -0.025em; }
+.tf_fls-normal { letter-spacing: 0em; }
+.tf_fls-wide { letter-spacing: 0.025em; }
+.tf_fls-wider { letter-spacing: 0.05em; }
+.tf_fls-widest { letter-spacing: 0.1em; }
 
 /* Text Transform */
-.tf.ftt-uppercase { text-transform: uppercase; }
-.tf.ftt-lowercase { text-transform: lowercase; }
-.tf.ftt-capitalize { text-transform: capitalize; }
-.tf.ftt-normal { text-transform: none; }
+.tf_ftt-uppercase { text-transform: uppercase; }
+.tf_ftt-lowercase { text-transform: lowercase; }
+.tf_ftt-capitalize { text-transform: capitalize; }
+.tf_ftt-normal { text-transform: none; }

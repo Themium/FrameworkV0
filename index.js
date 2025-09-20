@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("[TFV0]: hi my names stuffzez! im the creator! and uhh i decided to remove the premium thing so you can use it for free (for now) because there is basically nothing in TFV0 yet.")
                 //createPopup();
                 //observePopup();
-                injectStyles(false);
+                injectStyles(true);
             }
         })
         .catch(err => {

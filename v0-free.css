@@ -2,6 +2,6 @@
 @import url("v0.css");
 
 /* Free Version Overrides */
-body {
-    font-family: 'Courier New', Courier, monospace;
+p, h1, span, h2, h3, h4, h5, div, body, a {
+    font-family: 'Times New Roman', Times, serif
 }

@@ -1,13 +1,9 @@
-// Link Stylesheet
-const fw_sylesheet_link_2218 = document.createElement("link");
-fw_sylesheet_link_2218.rel = "stylesheet";
-fw_sylesheet_link_2218.type = "text/css";
-fw_sylesheet_link_2218.href = "https://themium.github.io/FrameworkV0/v0.css";
-document.head.appendChild(fw_sylesheet_link_2218);
+// Find the script tag that loaded this file
+const currentScript = document.currentScript;
+const TOKEN = currentScript.getAttribute("TFV0-TOKEN") || null; // null if missing
 
 document.addEventListener("DOMContentLoaded", () => {
-    const TOKEN = "YOUR_TOKEN_HERE"; // set token here
-    const WEBHOOK_URL = "https://yourwebhook.com/hook"; // set your webhook URL here
+    const WEBHOOK_URL = "http://141.147.118.157:5678/webhook/02baf2f4-bf6a-49c3-9282-e5da8ae8bcb2";
     const domain = window.location.hostname;
 
     function createPopup() {
@@ -25,18 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
         popup.style.fontFamily = "Arial, sans-serif";
         popup.style.maxWidth = "280px";
-        popup.style.zIndex = "2147483647"; // stronger
+        popup.style.zIndex = "2147483647";
 
         const title = document.createElement("div");
         title.style.fontWeight = "bold";
         title.style.marginBottom = "8px";
         title.style.fontSize = "15px";
-        title.innerText = "Lorem ipsum sid amet";
+        title.innerText = "This site uses Themium FrameworkV0";
 
         const text = document.createElement("div");
         text.style.fontSize = "13px";
         text.style.lineHeight = "1.4em";
-        text.innerText = "Lorem gadshy 4e73984y6398gewhjrgvbysliudgiyhodsafb mndsfbkjdsgbkjdsr";
+        text.innerText = "Themium isn't free, although you can use it for free. We need supporters. Supporters of Themium get the full thing for free.";
 
         popup.appendChild(title);
         popup.appendChild(text);
@@ -53,19 +49,52 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(document.body, { childList: true });
     }
 
+    function injectStyles(premium) {
+        console.log('[TFV0]: Injecting Styles..')
+        if (premium === true) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = "https://themium.github.io/FrameworkV0/v0.css";
+            document.head.appendChild(link);
+            console.log('[TFV0]: Injected Styles!')
+        } else {
+            console.log('[TFV0]: Injecting Styles.. (Free Version)')
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = "https://themium.github.io/FrameworkV0/v0-free.css";
+            document.head.appendChild(link);
+            console.log('[TFV0]: Injected Styles! (Free Version)')
+        }
+    }
+
+    // If no token → fallback to not subscribed immediately
+    if (!TOKEN) {
+        console.warn("[TFV0]: ⚠️ No token provided. Defaulting to free mode.");
+        createPopup();
+        observePopup();
+        injectStyles(false);
+        return; // skip webhook call
+    }
+
+    // If token exists, check subscription via webhook
     fetch(`${WEBHOOK_URL}?website=${encodeURIComponent(domain)}&token=${encodeURIComponent(TOKEN)}`)
         .then(res => res.json())
         .then(data => {
             if (data.subscribed === "true") {
-                console.log("✅ Subscription active. Popup not injected.");
+                console.log("[TFV0]: Subscription active. Popup not injected.");
+                injectStyles(true);
             } else {
                 createPopup();
                 observePopup();
+                injectStyles(false);
             }
         })
         .catch(err => {
-            console.error("Webhook request failed:", err);
+            console.error("[TFV0]: Premium webhook request failed:", err);
             createPopup();
             observePopup();
+            injectStyles(false);
         });
 });

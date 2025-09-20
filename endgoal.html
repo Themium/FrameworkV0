@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced CSS Framework — Live Demo</title>
+
+  <!-- ======= Demo Framework Styles (replace with your framework CSS) ======= -->
+  <!-- For demonstration this file uses minimal internal styles to emulate utility classes. -->
+  <style>
+    :root{
+      --brand: #0ea5a4;
+      --brand-600: #089ca0;
+      --bg: #0f172a;
+      --panel: #0b1220;
+      --muted: #94a3b8;
+      --radius: 12px;
+      --gap: 1rem;
+      --glass: rgba(255,255,255,0.04);
+      color-scheme: dark;
+    }
+    /* --- Basic reset & container --- */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system,"Segoe UI",Arial;color:#e6eef8;background:linear-gradient(180deg,#071026 0%, #041021 100%);}
+    .container{max-width:1200px;margin:2rem auto;padding:1rem}
+
+    /* --- Utility-ish classes --- */
+    .row{display:flex;gap:var(--gap);flex-wrap:wrap}
+    .col{flex:1;min-width:260px}
+    .stack{display:flex;flex-direction:column;gap:0.75rem}
+    .card{background:var(--panel);border-radius:var(--radius);padding:1rem;box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+    .muted{color:var(--muted);font-size:0.95rem}
+    .h1{font-size:1.6rem;font-weight:700;margin:0}
+    .h2{font-size:1.15rem;font-weight:600;margin:0}
+    .small{font-size:0.85rem}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;border-radius:10px;border:0;background:linear-gradient(180deg,var(--brand),var(--brand-600));color:white;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--brand)}
+    .btn.sm{padding:0.35rem 0.6rem;font-size:0.9rem}
+
+    /* --- Nav --- */
+    .topnav{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0.7rem;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 4px 18px rgba(2,6,23,0.5)}
+    .brand{display:flex;gap:0.75rem;align-items:center}
+    .brand .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#2dd4bf);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .navlinks{display:flex;gap:0.5rem;align-items:center}
+
+    /* --- Forms --- */
+    label{display:block;font-size:0.85rem;margin-bottom:0.25rem}
+    input,select,textarea{width:100%;padding:0.6rem;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+
+    /* --- Table --- */
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:0.6rem;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    th{font-weight:600}
+
+    /* --- Utilities preview --- */
+    .badge{display:inline-block;padding:0.2rem 0.5rem;border-radius:999px;background:var(--glass);font-weight:600}
+
+    /* --- Modal, Toast, Accordion --- */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center}
+    .modal{width:min(720px,96%);background:linear-gradient(180deg,#071424, #06121a);padding:1.2rem;border-radius:14px}
+    .modal.show{display:block}
+    .toast{position:fixed;right:1rem;bottom:1rem;background:linear-gradient(180deg,#06222a,#041620);padding:0.8rem;border-radius:10px;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+
+    details summary{cursor:pointer;padding:0.6rem;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);}
+
+    /* --- Responsive helpers --- */
+    @media (max-width:720px){.row{flex-direction:column}.brand .label{display:none}}
+
+    /* --- Code block --- */
+    pre{background:#02111a;padding:1rem;border-radius:10px;overflow:auto}
+
+    /* --- subtle animations --- */
+    .fade-in{animation:fadeIn 450ms ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Top navigation -->
+    <header class="topnav card">
+      <div class="brand">
+        <div class="logo">CF</div>
+        <div>
+          <div class="h1">CoolFramework</div>
+          <div class="muted small">Advanced component & utility demo</div>
+        </div>
+      </div>
+
+      <nav class="navlinks">
+        <a class="muted small" href="#components">Components</a>
+        <a class="muted small" href="#utilities">Utilities</a>
+        <a class="muted small" href="#patterns">Patterns</a>
+        <button class="btn ghost" id="openModal">Launch modal</button>
+      </nav>
+    </header>
+
+    <!-- Hero + playground -->
+    <section class="row" style="margin-top:1rem">
+      <div class="col card">
+        <div class="stack">
+          <div class="h2">Interactive Theme Playground</div>
+          <p class="muted small">Change core CSS variables to preview theme changes in real time — a helpful demo for designers and consumers of your framework.</p>
+
+          <div class="row">
+            <div style="flex:0 0 220px">
+              <div class="stack">
+                <label>Brand color</label>
+                <input type="color" id="brandColor" value="#0ea5a4">
+
+                <label>Panel background</label>
+                <input type="color" id="panelColor" value="#0b1220">
+
+                <label>Radius (px)</label>
+                <input type="range" id="radius" min="4" max="28" value="12">
+
+                <label class="small muted">Utilities</label>
+                <div style="display:flex;gap:0.5rem">
+                  <button class="btn sm" id="copyCSS">Copy variables</button>
+                  <button class="btn sm ghost" id="resetTheme">Reset</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card fade-in">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <div class="h2">Preview Card</div>
+                    <div class="muted small">Buttons, badges, inputs rendered with the active theme.</div>
+                  </div>
+                  <div>
+                    <span class="badge">v1.0.0</span>
+                  </div>
+                </div>
+
+                <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+                  <button class="btn">Primary</button>
+                  <button class="btn ghost">Ghost</button>
+                  <button class="btn sm">Small</button>
+
+                  <input placeholder="Text input" style="width:220px">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Docs quick start -->
+      <aside class="col card">
+        <div class="stack">
+          <div class="h2">Quick-start</div>
+          <pre><code>&lt;link rel="stylesheet" href="coolframework.min.css"/&gt;
+
+&lt;!-- small example --&gt;
+&lt;button class="btn"&gt;Primary&lt;/button&gt;</code></pre>
+
+          <div class="muted small">Copy/paste snippets or include the single-file CSS build. The demo page shows utility-first + components interoperability.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Components gallery -->
+    <section id="components" style="margin-top:1rem" class="card">
+      <div class="h2">Components</div>
+      <p class="muted small">A component gallery — each item demonstrates common variants and accessibility-friendly markup.</p>
+
+      <div class="row" style="margin-top:1rem">
+        <!-- Cards -->
+        <div class="col card">
+          <div class="h2">Cards</div>
+          <div class="stack" style="margin-top:0.5rem">
+            <div class="card">
+              <div class="row" style="align-items:center">
+                <div style="width:64px;height:64px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#2dd4bf)"></div>
+                <div style="flex:1">
+                  <div class="h2">Product title</div>
+                  <div class="muted small">Short description, 1–2 lines.</div>
+                </div>
+                <div><button class="btn">Buy</button></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="h2">List card</div>
+              <table>
+                <thead><tr><th>Name</th><th>Type</th><th>Price</th></tr></thead>
+                <tbody>
+                  <tr><td>Alpha</td><td>Standard</td><td>£12</td></tr>
+                  <tr><td>Beta</td><td>Premium</td><td>£24</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="col card">
+          <div class="h2">Forms</div>
+          <form class="stack" style="margin-top:0.5rem" onsubmit="event.preventDefault()">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" placeholder="Jane Doe">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" placeholder="you@domain.com">
+            </div>
+            <div>
+              <label for="role">Role</label>
+              <select id="role"><option>Designer</option><option>Developer</option><option>Product</option></select>
+            </div>
+            <div style="display:flex;gap:0.5rem;align-items:center">
+              <button class="btn" type="submit">Submit</button>
+              <button class="btn ghost" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Navigation -->
+        <div class="col card">
+          <div class="h2">Navigation / Header</div>
+          <div class="muted small">Responsive header with a compact mobile toggle.</div>
+          <nav style="margin-top:0.5rem">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;gap:0.5rem;align-items:center">
+                <div class="logo" style="width:36px;height:36px">NF</div>
+                <div class="h2">Nav demo</div>
+              </div>
+              <div>
+                <button class="btn ghost" id="mobileToggle">Menu</button>
+              </div>
+            </div>
+            <div id="mobileMenu" style="margin-top:0.75rem;display:none">
+              <a class="muted small" href="#">Overview</a> • <a class="muted small" href="#">Docs</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Utilities -->
+    <section id="utilities" class="card" style="margin-top:1rem">
+      <div class="h2">Utility classes & helpers</div>
+      <p class="muted small">Showcases spacing, text, grid, visibility, and helper classes your framework provides.</p>
+
+      <div style="margin-top:1rem" class="row">
+        <div class="col card">
+          <div class="h2">Typography</div>
+          <p class="h1">Heading 1 — bold display</p>
+          <p class="h2">Heading 2 — subhead</p>
+          <p class="muted">Muted paragraph — body copy example. Lorem ipsum dolor sit amet, consectetur.</p>
+          <pre><code>&lt;p class="muted"&gt;Muted paragraph&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="col card">
+          <div class="h2">Spacing & grid</div>
+          <div class="row card">
+            <div style="padding:0.8rem;border-radius:8px;background:var(--glass)">Grid item</div>
+            <div style="padding:0.8rem;border-radius:8px;background:var(--glass)">Grid item</div>
+            <div style="padding:0.8rem;border-radius:8px;background:var(--glass)">Grid item</div>
+          </div>
+          <pre><code>.row { display:flex; gap:var(--gap); }</code></pre>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Patterns -->
+    <section id="patterns" class="card" style="margin-top:1rem">
+      <div class="h2">Patterns & Interaction</div>
+      <div class="row" style="margin-top:0.75rem">
+        <div class="col card">
+          <div class="h2">Accordion</div>
+          <details>
+            <summary>What is CoolFramework?</summary>
+            <div style="padding:0.6rem" class="muted small">A design system with utilities, components, and helpful JS patterns.</div>
+          </details>
+
+          <details style="margin-top:0.5rem">
+            <summary>How to use tokens</summary>
+            <div style="padding:0.6rem" class="muted small">Expose CSS variables so users can theme easily.</div>
+          </details>
+        </div>
+
+        <div class="col card">
+          <div class="h2">Modal & Toasts</div>
+          <p class="muted small">Accessible modal markup and a simple toast notification.</p>
+          <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
+            <button class="btn" id="showToast">Show toast</button>
+            <button class="btn ghost" id="openModal2">Open modal (alt)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top:1rem;display:flex;justify-content:space-between;align-items:center">
+      <div class="muted small">© CoolFramework — Demo page</div>
+      <div class="muted small">Built with minimal JS • Accessible-first</div>
+    </footer>
+  </div>
+
+  <!-- Modal markup (hidden) -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <h3 id="modalTitle" class="h2">Modal title</h3>
+          <div class="muted small">This demonstrates modal spacing and header layout.</div>
+        </div>
+        <div><button class="btn ghost" id="closeModal">Close</button></div>
+      </div>
+
+      <div style="margin-top:1rem">
+        <p class="muted small">Modal content goes here. Put forms, confirmations, or images.</p>
+        <div style="display:flex;gap:0.5rem;margin-top:1rem">
+          <button class="btn">Confirm</button>
+          <button class="btn ghost" id="modalCancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container (will be cloned) -->
+  <div id="toastContainer"></div>
+
+  <!-- Minimal JS to demonstrate interactions (replace with your framework's JS helpers) -->
+  <script>
+    // Theme playground wiring
+    const brand = document.getElementById('brandColor');
+    const panel = document.getElementById('panelColor');
+    const radius = document.getElementById('radius');
+
+    function applyTheme(){
+      document.documentElement.style.setProperty('--brand', brand.value);
+      document.documentElement.style.setProperty('--panel', panel.value);
+      document.documentElement.style.setProperty('--radius', radius.value + 'px');
+      // compute a slightly darker brand for gradient
+      document.documentElement.style.setProperty('--brand-600', darkenHex(brand.value, 12));
+    }
+    brand.addEventListener('input', applyTheme);
+    panel.addEventListener('input', applyTheme);
+    radius.addEventListener('input', applyTheme);
+
+    document.getElementById('resetTheme').addEventListener('click', ()=>{
+      brand.value = '#0ea5a4'; panel.value = '#0b1220'; radius.value = 12; applyTheme();
+    });
+
+    document.getElementById('copyCSS').addEventListener('click', ()=>{
+      const css = `:root { --brand: ${brand.value}; --panel: ${panel.value}; --radius: ${radius.value}px; }`;
+      navigator.clipboard?.writeText(css).then(()=>alert('Variables copied to clipboard'));
+    });
+
+    // Modal & toast
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    function openModal(){ modalBackdrop.style.display = 'flex'; }
+    function closeModal(){ modalBackdrop.style.display = 'none'; }
+    document.getElementById('openModal').addEventListener('click', openModal);
+    document.getElementById('openModal2').addEventListener('click', openModal);
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    document.getElementById('modalCancel').addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target===modalBackdrop) closeModal(); });
+
+    document.getElementById('showToast').addEventListener('click', ()=>{
+      showToast('This is a sample toast — action completed.');
+    });
+
+    function showToast(message, timeout=4000){
+      const t = document.createElement('div');
+      t.className = 'toast'; t.textContent = message;
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.style.opacity = '0'; t.style.transform='translateY(8px)'; setTimeout(()=>t.remove(),400) }, timeout);
+    }
+
+    // Mobile toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle.addEventListener('click', ()=>{ mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none'; });
+
+    // Utility: darken hex color
+    function darkenHex(hex, percent){
+      const num = parseInt(hex.slice(1),16);
+      let r = (num >> 16) - Math.round(2.55*percent);
+      let g = ((num >> 8) & 0x00FF) - Math.round(2.55*percent);
+      let b = (num & 0x0000FF) - Math.round(2.55*percent);
+      r = (r<0)?0:r; g = (g<0)?0:g; b = (b<0)?0:b;
+      return '#' + ( (1<<24) + (r<<16) + (g<<8) + b ).toString(16).slice(1);
+    }
+
+    // small accessibility helpers
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // initial theme apply
+    applyTheme();
+  </script>
+</body>
+</html>

@@ -5,13 +5,11 @@ fw_sylesheet_link_2218.type = "text/css";
 fw_sylesheet_link_2218.href = "https://themium.github.io/FrameworkV0/v0.css";
 document.head.appendChild(fw_sylesheet_link_2218);
 
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
     const TOKEN = "YOUR_TOKEN_HERE"; // set token here
     const WEBHOOK_URL = "https://yourwebhook.com/hook"; // set your webhook URL here
-
     const domain = window.location.hostname;
 
-    // Function to create popup
     function createPopup() {
         if (document.getElementById("custom-popup-bubble")) return;
 
@@ -27,7 +25,7 @@ document.head.appendChild(fw_sylesheet_link_2218);
         popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
         popup.style.fontFamily = "Arial, sans-serif";
         popup.style.maxWidth = "280px";
-        popup.style.zIndex = "999999";
+        popup.style.zIndex = "2147483647"; // stronger
 
         const title = document.createElement("div");
         title.style.fontWeight = "bold";
@@ -46,7 +44,6 @@ document.head.appendChild(fw_sylesheet_link_2218);
         document.body.appendChild(popup);
     }
 
-    // MutationObserver to re-add popup if deleted
     function observePopup() {
         const observer = new MutationObserver(() => {
             if (!document.getElementById("custom-popup-bubble")) {
@@ -56,7 +53,6 @@ document.head.appendChild(fw_sylesheet_link_2218);
         observer.observe(document.body, { childList: true });
     }
 
-    // Call webhook
     fetch(`${WEBHOOK_URL}?website=${encodeURIComponent(domain)}&token=${encodeURIComponent(TOKEN)}`)
         .then(res => res.json())
         .then(data => {
@@ -69,8 +65,7 @@ document.head.appendChild(fw_sylesheet_link_2218);
         })
         .catch(err => {
             console.error("Webhook request failed:", err);
-            // Fallback: still inject popup
             createPopup();
             observePopup();
         });
-})();
+});
